@@ -65,9 +65,15 @@ public plugin_init()
 	RegisterHookChain(RG_CBasePlayer_Spawn, "RG__CBasePlayer_Spawn", true)
 	RegisterHookChain(RG_CBasePlayer_TakeDamage, "RG__CBasePlayer_TakeDamage", true)
 
+	new pCvar
 
-	bind_pcvar_float(register_cvar("zp_zombie_regeneration_amount", "10.0"), g_eCvars[REGENERATION_AMOUNT])
-	bind_pcvar_float(register_cvar("zp_zombie_regeneration_time", "1.0"), g_eCvars[REGENERATION_TIME])
+	pCvar = create_cvar("zp_zombie_regeneration_amount", "10.0", FCVAR_NONE, "The amount of HP you will get every time.^nDepends on <zp_zombie_regeneration_time> cvar.")
+	bind_pcvar_float(pCvar, g_eCvars[REGENERATION_AMOUNT])
+
+	pCvar = create_cvar("zp_zombie_regeneration_time", "1.0", FCVAR_NONE, "Every X(in seconds) giving HP")
+	bind_pcvar_float(pCvar, g_eCvars[REGENERATION_TIME])
+
+	AutoExecConfig(true, "ReZombieRegeneration", "HuehuePlugins_Config")
 }
 
 public RG__CBasePlayer_Spawn(id)
