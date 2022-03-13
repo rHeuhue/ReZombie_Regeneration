@@ -32,21 +32,21 @@ native zp_get_user_zombie(id)
 
 #define is_player_zombie(%0) zp_get_user_zombie(%0)
 
-new const PLUGIN_NAME[] = "ZP: Zombie Regeneration"
+new const PLUGIN_NAME[] = "ReZP: Zombie Regeneration"
 
 #elseif MOD_TYPE == 1
 native bb_is_user_zombie(id)
 
 #define is_player_zombie(%0) bb_is_user_zombie(%0)
 
-new const PLUGIN_NAME[] = "BB: Zombie Regeneration"
+new const PLUGIN_NAME[] = "ReBB: Zombie Regeneration"
 
 #elseif MOD_TYPE == 2
 native is_user_zombie(id)
 
 #define is_player_zombie(%0) is_user_zombie(%0)
 
-new const PLUGIN_NAME[] = "VZBB: Zombie Regeneration"
+new const PLUGIN_NAME[] = "ReVZBB: Zombie Regeneration"
 #elseif MOD_TYPE == 3
 #define is_player_zombie(%0) (get_member(%0, m_iTeam) == TEAM_TERRORIST)
 
@@ -67,10 +67,10 @@ public plugin_init()
 
 	new pCvar
 
-	pCvar = create_cvar("zp_zombie_regeneration_amount", "10.0", FCVAR_NONE, "The amount of HP you will get every time.^nDepends on <zp_zombie_regeneration_time> cvar.")
+	pCvar = create_cvar("re_zombie_regeneration_amount", "10.0", FCVAR_NONE, "The amount of HP you will get every time.^nDepends on <zp_zombie_regeneration_time> cvar.")
 	bind_pcvar_float(pCvar, g_eCvars[REGENERATION_AMOUNT])
 
-	pCvar = create_cvar("zp_zombie_regeneration_time", "1.0", FCVAR_NONE, "Every X(in seconds) giving HP")
+	pCvar = create_cvar("re_zombie_regeneration_time", "1.0", FCVAR_NONE, "Every X(in seconds) giving HP")
 	bind_pcvar_float(pCvar, g_eCvars[REGENERATION_TIME])
 
 	AutoExecConfig(true, "ReZombieRegeneration", "HuehuePlugins_Config")
